@@ -12,7 +12,7 @@ def get(isamAppliance, check_mode=False, force=False):
     Retrieving the current FIPS Mode configuration
     """
     return isamAppliance.invoke_get("Retrieving the current FIPS Mode configuration",
-                                    "/fips_cfg", requires_model=requires_model)
+                                    "/fips_cfg")
 
 
 def set(isamAppliance, fipsEnabled=True, tlsv10Enabled=True, tlsv11Enabled=False, check_mode=False, force=False):
@@ -32,8 +32,7 @@ def set(isamAppliance, fipsEnabled=True, tlsv10Enabled=True, tlsv11Enabled=False
                     "fipsEnabled": fipsEnabled,
                     "tlsv10Enabled": tlsv10Enabled,
                     "tlsv11Enabled": tlsv11Enabled
-                },
-                requires_model=requires_model
+                }
             )
 
     return isamAppliance.create_return_object(warnings=obj['warnings'])
